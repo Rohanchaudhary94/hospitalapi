@@ -5,7 +5,6 @@ const Doctor = require('../models/doctor'); //Doctor model
 //creates a new doctor account
 module.exports.CreateDoctor = async function (req, res) {
     try {
-        console.log(req.body);
         let doctor = await Doctor.findOne({ email: req.body.email }); //checking if doctor alreadr exists
         if (doctor) {
             //if doctor exists

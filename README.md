@@ -35,7 +35,6 @@ Start the server
   
 ## Documentation
 
-Postman Link - https://www.getpostman.com/collections/9e737edaee39b23269ac (Use this postman collection to test the API).
 
 Routes :
 

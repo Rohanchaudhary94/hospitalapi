@@ -35,6 +35,7 @@ Start the server
   
 ## Documentation
 
+Root Hosted Link - https://hospital-api-cc.herokuapp.com/
 
 Routes :
 

@@ -5,14 +5,15 @@ const Doctor = require('../models/doctor'); //Doctor model
 //creates a new doctor account
 module.exports.CreateDoctor = async function (req, res) {
     try {
-        let doctor = await Doctor.findOne({ email: req.query.email }); //checking if doctor alreadr exists
+        console.log(req.body);
+        let doctor = await Doctor.findOne({ email: req.body.email }); //checking if doctor alreadr exists
         if (doctor) {
             //if doctor exists
             return res.json(409, {
                 message: 'Doctor already exists!'
             });
         } else {
-            doctor = Doctor.create(req.query); //creating a new doctor account
+            doctor = await Doctor.create(req.body); //creating a new doctor account
             return res.json(201, {
                 message: 'Doctor created successfully!'
             })
@@ -30,8 +31,8 @@ module.exports.CreateDoctor = async function (req, res) {
 module.exports.DoctorLogin = async function (req, res) {
     try {
         //finding the doctor
-        let doctor = await Doctor.findOne({ email: req.query.email });
-        if (!doctor || doctor.password != req.query.password) {
+        let doctor = await Doctor.findOne({ email: req.body.email });
+        if (!doctor || doctor.password != req.body.password) {
             //if doctor dosen't exist or invalid password
             return res.json(401, {
                 message: 'Invalid username/password'

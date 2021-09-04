@@ -18,7 +18,7 @@ module.exports.CreatePatient = async function (req, res) {
                 message: 'Doctor does not exist in database!'
             })
         } else {
-            let patient = await Patient.findOne({ phone: req.query.phone }); //finding the patient
+            let patient = await Patient.findOne({ phone: req.body.phone }); //finding the patient
             if (patient) {
                 //if patient already exists return his/her details
                 return res.json(201, {
@@ -26,7 +26,7 @@ module.exports.CreatePatient = async function (req, res) {
                     data: patient
                 })
             } else {
-                patient = Patient.create(req.query); //creating a new patient
+                patient = await Patient.create(req.body); //creating a new patient
                 return res.json(200, {
                     message: 'Patient created successfully',
                     data: patient

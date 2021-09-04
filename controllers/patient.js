@@ -103,7 +103,7 @@ module.exports.AllReports = async function (req, res) {
             let patient = await Patient.findById(req.params.id); //finding the patient
             if (patient) {
                 //if patient exists
-                let reports = await Report.find({ patient: patient._id }); //fetching all reports of a patient
+                let reports = await Report.find({ patient: patient._id }).sort({ date: -1 }); //fetching all reports of a patient
                 return res.json(201, {
                     message: 'Reports fetched successfully',
                     data: reports

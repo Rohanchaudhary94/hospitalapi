@@ -11,7 +11,7 @@ An API created using NodeJS for the doctors of a hospital to cater to the need o
 Clone the project
 
 ```bash
-  git clone https://github.com/rajarshisg/Hospital-API-For-Covid-19.git
+  git clone https://github.com/Rohanchaudhary94/Hospital-API-For-Covid-19.git
 ```
 
 Go to the project directory
@@ -35,7 +35,7 @@ Start the server
   
 ## Documentation
 
-Root Hosted Link - https://hospital-api-cc.herokuapp.com/
+
 
 Routes :
 
@@ -64,6 +64,6 @@ Folder Structure
     e. config - Contains all the config files.
 ## Authors
 
-- [@rajarshisg](https://github.com/rajarshisg)
+- [@rajarshisg](https://github.com/Rohanchaudhary94)
 
   

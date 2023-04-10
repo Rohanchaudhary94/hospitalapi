@@ -64,6 +64,6 @@ Folder Structure
     e. config - Contains all the config files.
 ## Authors
 
-- [@rajarshisg](https://github.com/Rohanchaudhary94)
+- [@Rohanchaudhary94](https://github.com/Rohanchaudhary94)
 
   

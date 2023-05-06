@@ -13,12 +13,12 @@ module.exports.GetReports = async function (req, res) {
         const doctor = await Doctor.findById(decoded._id); //finding the doctor
         if (!doctor) {
             //if doctor dosen't exist
-            return res.json(401, {
+            return res.status(401).json( {
                 message: 'Doctor does not exist in database!'
             })
         } else {
             let reports = await Report.find({ status: req.params.status }); //fetching the reports
-            return res.json(200, {
+            return res.status(200).json( {
                 message: 'Reports fetched successfully',
                 data: reports
             })
@@ -27,7 +27,7 @@ module.exports.GetReports = async function (req, res) {
     } catch {
         //checking for errors
         console.log('Internal server error!!');
-        return res.json(500, {
+        return res.status(500).json( {
             message: 'Internal Server Error'
         })
     }

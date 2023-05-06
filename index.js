@@ -5,7 +5,7 @@ const jwtPassportStrategy = require('./config/passport_jwt'); //passport jwt con
 const db = require('./config/mongoose'); //mongoose connection
 const PORT = process.env.PORT || 8000; //port on which server runs
 
-app.use(express.urlencoded()); //to parse form data
+app.use(express.urlencoded({extended: true})); //to parse form data
 app.use('/', require('./routes/index')); //set up scalable routes folder
 
 //server listens on port

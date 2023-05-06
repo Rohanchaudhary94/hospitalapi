@@ -14,20 +14,20 @@ module.exports.CreatePatient = async function (req, res) {
 
         if (!doctor) {
             //if doctor dosen't exist
-            return res.json(401, {
+            return res.status(401).json( {
                 message: 'Doctor does not exist in database!'
             })
         } else {
             let patient = await Patient.findOne({ phone: req.body.phone }); //finding the patient
             if (patient) {
                 //if patient already exists return his/her details
-                return res.json(201, {
+                return res.status(201).json( {
                     message: 'Patient already exists',
                     data: patient
                 })
             } else {
                 patient = await Patient.create(req.body); //creating a new patient
-                return res.json(200, {
+                return res.status(200).json( {
                     message: 'Patient created successfully',
                     data: patient
                 });
@@ -36,7 +36,7 @@ module.exports.CreatePatient = async function (req, res) {
     } catch {
         //checking for errors
         console.log('Internal server error!!');
-        return res.json(500, {
+        return res.status(500).json( {
             message: 'Internal Server Error'
         })
     }
@@ -53,7 +53,7 @@ module.exports.CreateReport = async function (req, res) {
         const doctor = await Doctor.findById(decoded._id); //finding the doctor
         if (!doctor) {
             //if doctor dosen't exist
-            return res.json(401, {
+            return res.status(401).json( {
                 message: 'Doctor does not exist in database!'
             })
         } else {
@@ -65,13 +65,13 @@ module.exports.CreateReport = async function (req, res) {
                     patient: patient._id,
                     status: req.body.status
                 });
-                return res.json(201, {
+                return res.status(201).json( {
                     message: 'Report created successfully',
                     data: report
                 })
             } else {
                 //if patient dosen't exist
-                return res.json(401, {
+                return res.status(401).json( {
                     message: 'Patient dosen\'t exist in database',
                 });
             }
@@ -79,7 +79,7 @@ module.exports.CreateReport = async function (req, res) {
     } catch {
         //checking for errors
         console.log('Internal server error!!');
-        return res.json(500, {
+        return res.status(500).json( {
             message: 'Internal Server Error'
         })
     }
@@ -96,7 +96,7 @@ module.exports.AllReports = async function (req, res) {
         const doctor = await Doctor.findById(decoded._id); //finding the doctor
         if (!doctor) {
             //if doctor dosen't exist
-            return res.json(401, {
+            return res.status(401).json( {
                 message: 'Doctor does not exist in database!'
             })
         } else {
@@ -104,13 +104,13 @@ module.exports.AllReports = async function (req, res) {
             if (patient) {
                 //if patient exists
                 let reports = await Report.find({ patient: patient._id }).sort({ date: -1 }); //fetching all reports of a patient
-                return res.json(201, {
+                return res.status(201).json( {
                     message: 'Reports fetched successfully',
                     data: reports
                 })
             } else {
                 //if patient dosen't exist
-                return res.json(401, {
+                return res.status(401).json( {
                     message: 'Patient dosen\'t exist in database',
                 });
             }
@@ -118,7 +118,7 @@ module.exports.AllReports = async function (req, res) {
     } catch {
         //checking for errors
         console.log('Internal server error!!');
-        return res.json(500, {
+        return res.status(500).json( {
             message: 'Internal Server Error'
         })
     }

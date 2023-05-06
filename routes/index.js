@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', function(req, res) {
-    return res.json(400, {
+    return res.status(400).json({
         message: 'Please request the correct routes! Check "https://github.com/Rohanchaudhary94/Hospital-API-For-Covid-19/blob/master/README.md" for documentation.'
     }
 )});
